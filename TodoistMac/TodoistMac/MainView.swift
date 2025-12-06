@@ -88,6 +88,8 @@ struct MainView: View {
         switch viewModel.selectedFilter {
         case .search:
             SearchView(viewModel: viewModel)
+        case .calendar:
+            CalendarView(viewModel: viewModel)
         default:
             TaskListView(viewModel: viewModel)
         }

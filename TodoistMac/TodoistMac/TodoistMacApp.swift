@@ -43,10 +43,15 @@ struct TodoistMacApp: App {
                 }
                 .keyboardShortcut("3", modifiers: .command)
 
+                Button("Go to Calendar") {
+                    viewModel.selectedFilter = .calendar
+                }
+                .keyboardShortcut("4", modifiers: .command)
+
                 Button("Go to Completed") {
                     viewModel.selectedFilter = .completed
                 }
-                .keyboardShortcut("4", modifiers: .command)
+                .keyboardShortcut("5", modifiers: .command)
             }
 
             CommandGroup(replacing: .textEditing) {

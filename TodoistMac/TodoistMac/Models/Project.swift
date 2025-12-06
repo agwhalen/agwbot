@@ -70,6 +70,7 @@ enum SidebarFilter: Hashable {
     case inbox
     case today
     case upcoming
+    case calendar
     case completed
     case project(UUID)
     case label(String)
@@ -80,6 +81,7 @@ enum SidebarFilter: Hashable {
         case .inbox: return "Inbox"
         case .today: return "Today"
         case .upcoming: return "Upcoming"
+        case .calendar: return "Calendar"
         case .completed: return "Completed"
         case .project: return "Project"
         case .label(let name): return name
@@ -92,6 +94,7 @@ enum SidebarFilter: Hashable {
         case .inbox: return "tray"
         case .today: return "calendar"
         case .upcoming: return "calendar.badge.clock"
+        case .calendar: return "calendar.day.timeline.left"
         case .completed: return "checkmark.circle"
         case .project: return "folder"
         case .label: return "tag"

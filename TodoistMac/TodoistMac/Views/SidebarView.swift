@@ -63,6 +63,15 @@ struct SidebarView: View {
                     }
                 }
 
+                NavigationLink(value: SidebarFilter.calendar) {
+                    Label {
+                        Text("Calendar")
+                    } icon: {
+                        Image(systemName: "calendar.day.timeline.left")
+                            .foregroundStyle(.orange)
+                    }
+                }
+
                 NavigationLink(value: SidebarFilter.completed) {
                     Label {
                         HStack {

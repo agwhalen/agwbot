@@ -23,6 +23,7 @@
 		A100001B226C0A0000000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001C226C0A0000000001 /* SettingsView.swift */; };
 		A100001D226C0A0000000001 /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001E226C0A0000000001 /* QuickAddView.swift */; };
 		A100001F226C0A0000000001 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000020226C0A0000000001 /* Extensions.swift */; };
+		A1000022226C0A0000000001 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000023226C0A0000000001 /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A100001E226C0A0000000001 /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
 		A1000020226C0A0000000001 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A1000021226C0A0000000001 /* TodoistMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoistMac.entitlements; sourceTree = "<group>"; };
+		A1000023226C0A0000000001 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				A100001A226C0A0000000001 /* SearchView.swift */,
 				A100001C226C0A0000000001 /* SettingsView.swift */,
 				A100001E226C0A0000000001 /* QuickAddView.swift */,
+				A1000023226C0A0000000001 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				A100001B226C0A0000000001 /* SettingsView.swift in Sources */,
 				A100001D226C0A0000000001 /* QuickAddView.swift in Sources */,
 				A100001F226C0A0000000001 /* Extensions.swift in Sources */,
+				A1000022226C0A0000000001 /* CalendarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
