@@ -9,7 +9,7 @@ struct CalendarView: View {
     private let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     var body: some View {
-        HSplitView {
+        HStack(spacing: 0) {
             // Calendar Panel
             VStack(spacing: 0) {
                 // Month Navigation Header
@@ -118,7 +118,9 @@ struct CalendarView: View {
                 }
                 .background(Color.gray.opacity(0.03))
             }
-            .frame(minWidth: 350, idealWidth: 400)
+            .frame(minWidth: 320, maxWidth: 400)
+
+            Divider()
 
             // Tasks for Selected Date
             VStack(spacing: 0) {
@@ -136,7 +138,7 @@ struct CalendarView: View {
                     Spacer()
 
                     Button {
-                        addTaskForSelectedDate()
+                        viewModel.isShowingAddTask = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title2)
@@ -166,7 +168,7 @@ struct CalendarView: View {
                             .foregroundStyle(.secondary)
 
                         Button("Add Task") {
-                            addTaskForSelectedDate()
+                            viewModel.isShowingAddTask = true
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.red)
@@ -185,7 +187,7 @@ struct CalendarView: View {
                     }
                 }
             }
-            .frame(minWidth: 300)
+            .frame(minWidth: 280)
         }
         .sheet(isPresented: $viewModel.isShowingAddTask) {
             AddTaskView(viewModel: viewModel, isPresented: $viewModel.isShowingAddTask)
@@ -256,16 +258,12 @@ struct CalendarView: View {
     private var calendarDays: [Date] {
         var days: [Date] = []
 
-        // Get the first day of the month
         let components = calendar.dateComponents([.year, .month], from: currentMonth)
         guard let firstOfMonth = calendar.date(from: components) else { return days }
 
-        // Get the weekday of the first day (0 = Sunday)
         let firstWeekday = calendar.component(.weekday, from: firstOfMonth)
 
-        // Add days from previous month to fill the first week
         if let startDate = calendar.date(byAdding: .day, value: -(firstWeekday - 1), to: firstOfMonth) {
-            // Generate 42 days (6 weeks) to ensure we cover the full month
             for i in 0..<42 {
                 if let day = calendar.date(byAdding: .day, value: i, to: startDate) {
                     days.append(day)
@@ -281,7 +279,6 @@ struct CalendarView: View {
             guard let dueDate = todo.dueDate else { return false }
             return calendar.isDate(dueDate, inSameDayAs: selectedDate)
         }.sorted { task1, task2 in
-            // Sort by completion status first, then by priority
             if task1.isCompleted != task2.isCompleted {
                 return !task1.isCompleted
             }
@@ -341,11 +338,6 @@ struct CalendarView: View {
             currentMonth = newMonth
         }
     }
-
-    private func addTaskForSelectedDate() {
-        // Set the selected date as default for the new task
-        viewModel.isShowingAddTask = true
-    }
 }
 
 // MARK: - Supporting Views
@@ -367,7 +359,6 @@ struct CalendarDayCell: View {
                 .fontWeight(isToday ? .bold : .regular)
                 .foregroundStyle(textColor)
 
-            // Task indicator dots
             if taskCount > 0 {
                 HStack(spacing: 2) {
                     ForEach(0..<min(taskCount, 3), id: \.self) { _ in
@@ -382,7 +373,6 @@ struct CalendarDayCell: View {
                     }
                 }
             } else {
-                // Placeholder to maintain height
                 Color.clear
                     .frame(height: 5)
             }
@@ -425,7 +415,6 @@ struct CalendarTaskRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            // Checkbox
             Button {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     viewModel.toggleTodo(todo)
@@ -438,7 +427,6 @@ struct CalendarTaskRow: View {
             .buttonStyle(.plain)
             .padding(.top, 2)
 
-            // Content
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 6) {
                     if todo.priority != .none {
@@ -459,7 +447,6 @@ struct CalendarTaskRow: View {
                         .lineLimit(1)
                 }
 
-                // Project indicator
                 if let projectId = todo.projectId,
                    let project = viewModel.projects.first(where: { $0.id == projectId }) {
                     HStack(spacing: 4) {
@@ -473,7 +460,6 @@ struct CalendarTaskRow: View {
 
             Spacer()
 
-            // Quick actions on hover
             if isHovered && !todo.isCompleted {
                 Button {
                     viewModel.selectedTask = todo
@@ -544,5 +530,5 @@ struct OverviewStat: View {
 
 #Preview {
     CalendarView(viewModel: TodoViewModel())
-        .frame(width: 800, height: 600)
+        .frame(width: 700, height: 500)
 }
