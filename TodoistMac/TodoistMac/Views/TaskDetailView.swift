@@ -46,7 +46,7 @@ struct TaskDetailView: View {
                     }
 
                     // Title
-                    TextField("Task name", text: $editedTitle, axis: .vertical)
+                    TextField("Task name", text: $editedTitle)
                         .font(.title2.bold())
                         .textFieldStyle(.plain)
                         .focused($isTitleFocused)
@@ -57,9 +57,8 @@ struct TaskDetailView: View {
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
 
-                        TextField("Add a description...", text: $editedDescription, axis: .vertical)
+                        TextField("Add a description...", text: $editedDescription)
                             .textFieldStyle(.plain)
-                            .lineLimit(5...10)
                     }
 
                     Divider()

@@ -37,13 +37,13 @@ struct AddTaskView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Title
-                    TextField("Task name", text: $title, axis: .vertical)
+                    TextField("Task name", text: $title)
                         .font(.title3)
                         .textFieldStyle(.plain)
                         .focused($isTitleFocused)
 
                     // Description
-                    TextField("Description", text: $description, axis: .vertical)
+                    TextField("Description", text: $description)
                         .font(.body)
                         .textFieldStyle(.plain)
                         .foregroundStyle(.secondary)
